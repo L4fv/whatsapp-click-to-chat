@@ -10,12 +10,12 @@ import VeeValidate from "vee-validate";
 import VueAnalytics from "vue-analytics";
 
 Vue.use(VueAnalytics, {
-  id: "UA-xxxxxxxxxx-x",
+  id: "UA-xxxx",
   router
 });
 Vue.use(Vuetify, {
   theme: {
-    primary: "#009688",
+    primary: "#00695C",
     secondary: "#37474f",
     accent: "#F50057",
     error: "#FF5252",
