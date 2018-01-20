@@ -114,9 +114,9 @@ export default {
     },
     sendWhatsapp() {
       window.open(
-        `https://api.whatsapp.com/send?phone=${this.country.callingCode}${
-          this.phoneNumber
-        }&text=${this.message}`,
+        `https://api.whatsapp.com/send?phone=${
+          this.country.default.callingCode
+        }${this.phoneNumber}&text=${this.message.text}`,
         "_blank"
       );
     }

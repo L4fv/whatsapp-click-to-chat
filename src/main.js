@@ -10,8 +10,7 @@ import VeeValidate from "vee-validate";
 import VueAnalytics from "vue-analytics";
 
 Vue.use(VueAnalytics, {
-  /* id: "UA-XXX-X", */
-  id: "UA-111593450-2",
+  id: "UA-xxxxxxxxxx-x",
   router
 });
 Vue.use(Vuetify, {
