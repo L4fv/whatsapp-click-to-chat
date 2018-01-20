@@ -21,20 +21,21 @@
           <v-tabs-items v-model="model" touchless>
 
             <v-tab-item id="tab-1">
+              <!-- demo tab -->
               <v-card flat>
                 <v-card-text>
                   <form v-on:submit.prevent="sendWhatsapp">
                     <v-layout wrap row align-center>
                       <v-flex xs3 pa-1>
-                        <v-select autocomplete :items="code" item-value="callingCode" v-model="country.default" label="País" item-text="code" bottom :error-messages="errors.collect('country')"
-                          v-validate="'required'" data-vv-name="country" required></v-select>
+                        <v-select autocomplete :items="code" item-value="callingCode" v-model="country.default" label="País" item-text="code" bottom
+                          :error-messages="errors.collect('country')" v-validate="'required'" data-vv-name="country" required></v-select>
                       </v-flex>
                       <v-flex xs7 pa-1>
-                        <v-text-field v-model="phoneNumber" auto-focus placeholder="987654321" label="Número" :error-messages="errors.collect('phoneNumber')" v-validate="'required|numeric'"
-                          data-vv-name="phoneNumber" required></v-text-field>
+                        <v-text-field v-model="phoneNumber" auto-focus placeholder="987654321" label="Número" :error-messages="errors.collect('phoneNumber')"
+                          v-validate="'required|numeric'" data-vv-name="phoneNumber" required></v-text-field>
                       </v-flex>
                       <v-flex xs2>
-                        <v-btn icon @click.native="clearPhone">
+                        <v-btn icon @click.native="clearPhoneNumber">
                           <v-icon>clear</v-icon>
                         </v-btn>
                       </v-flex>
@@ -51,6 +52,7 @@
               </v-card>
             </v-tab-item>
             <v-tab-item id="tab-2">
+              <!-- Setting tab -->
               <v-card flat>
                 <v-card-text>
                   <setting-component :code="code"></setting-component>
@@ -60,18 +62,20 @@
           </v-tabs-items>
         </v-card>
       </v-flex>
+      <!-- github and author links -->
       <v-flex xs12 text-xs-center v-if="model==='tab-2'">
-    <div class="linkUser">
-      GitHub Repository: <a to="" target="_blank">GitHub</a>
-      <br/>
-      Other project: <a href="https://epik.com.pe/" target="_blank" class="primary--text">Epik Perú</a>
-    </div>
-    </v-flex>
+        <div class="linkUser">
+          GitHub Repository:
+          <a to="" target="_blank">GitHub</a>
+          <br/> Other project:
+          <a href="https://epik.com.pe/" target="_blank" class="primary--text">Epik Perú</a>
+        </div>
+      </v-flex>
     </v-layout>
   </v-app>
 </template>
 <script>
-import { code } from "./code.js";
+import { code } from "./code.js"; //json of country dial
 import SettingComponent from "./components/SettingComponent";
 import Icon from "vue-awesome/components/Icon";
 import "vue-awesome/icons/whatsapp";
@@ -87,7 +91,6 @@ export default {
   data() {
     return {
       phoneNumber: null,
-      arrayNumbers: [],
       model: null,
       code: code,
       dictionary: {
@@ -106,11 +109,7 @@ export default {
     this.$validator.localize("en", this.dictionary);
   },
   methods: {
-    addPhone() {
-      this.arrayNumbers.push(this.phoneNumber);
-      this.phoneNumber = null;
-    },
-    clearPhone() {
+    clearPhoneNumber() {
       this.phoneNumber = null;
     },
     sendWhatsapp() {
@@ -134,6 +133,7 @@ export default {
 .cardLayout {
   height: 100vh !important;
 }
+
 .linkUser {
   display: block !important;
   box-sizing: border-box;

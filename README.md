@@ -1,10 +1,10 @@
 # trivelapp
 
-> A Vue.js project
+> A Vue.js Vuetify pwa a whatsapp demo
 
 ## Build Setup
 
-``` bash
+```bash
 # install dependencies
 npm install
 

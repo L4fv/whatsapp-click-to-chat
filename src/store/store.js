@@ -16,7 +16,7 @@ export const store = new Vuex.Store({
       default: {
         name: "Perú",
         code: "PE",
-        allingCode: "51"
+        callingCode: "51"
       }
     }
   },
