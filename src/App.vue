@@ -10,48 +10,27 @@
               <v-icon>more_vert</v-icon>
             </v-btn>
             <v-tabs color="primary" slot="extension" slider-color="yellow" v-model="model" grow>
-              <v-tab href="#tab-1" class="red--text">
-                <v-icon>message</v-icon>
+              <v-tab href="#tab-1" >
+                Simple
               </v-tab>
               <v-tab href="#tab-2">
-                <v-icon>build</v-icon>
+                Masivo
+              </v-tab>
+              <v-tab href="#tab-3">
+                Configuración
               </v-tab>
             </v-tabs>
           </v-toolbar>
           <v-tabs-items v-model="model" touchless>
-
             <v-tab-item id="tab-1">
-              <!-- demo tab -->
-              <v-card flat>
-                <v-card-text>
-                  <form v-on:submit.prevent="sendWhatsapp">
-                    <v-layout wrap row align-center>
-                      <v-flex xs3 pa-1>
-                        <v-select autocomplete :items="code" item-value="callingCode" v-model="country.default" label="País" item-text="code" bottom
-                          :error-messages="errors.collect('country')" v-validate="'required'" data-vv-name="country" required></v-select>
-                      </v-flex>
-                      <v-flex xs7 pa-1>
-                        <v-text-field v-model="phoneNumber" auto-focus placeholder="987654321" label="Número" :error-messages="errors.collect('phoneNumber')"
-                          v-validate="'required|numeric'" data-vv-name="phoneNumber" required></v-text-field>
-                      </v-flex>
-                      <v-flex xs2>
-                        <v-btn icon @click.native="clearPhoneNumber">
-                          <v-icon>clear</v-icon>
-                        </v-btn>
-                      </v-flex>
-                      <v-flex xs12>
-                        <v-text-field v-model="message.text" label="Mensaje" placeholder="Hello ..." multi-line auto-grow></v-text-field>
-                      </v-flex>
-                      <v-flex xs12 text-xs-center mt-5>
-                        <v-btn large class="primary" type="submit" dark>
-                          <icon name="whatsapp" class="mr-2" scale="2" dark></icon>Enviar Mensaje</v-btn>
-                      </v-flex>
-                    </v-layout>
-                  </form>
-                </v-card-text>
-              </v-card>
+              <!-- Send Message -->
+              <send-whatsapp :code="code"></send-whatsapp>
             </v-tab-item>
             <v-tab-item id="tab-2">
+              <!-- Send Message -->
+              <advance-send-whatsapp :code="code"></advance-send-whatsapp>
+            </v-tab-item>
+            <v-tab-item id="tab-3">
               <!-- Setting tab -->
               <v-card flat>
                 <v-card-text>
@@ -63,10 +42,10 @@
         </v-card>
       </v-flex>
       <!-- github and author links -->
-      <v-flex xs12 text-xs-center v-if="model==='tab-2'">
+      <v-flex xs12 text-xs-center v-if="model==='tab-3'">
         <div class="linkUser">
           GitHub Repository:
-          <a to="" target="_blank">GitHub</a>
+          <a href="https://github.com/L4fv/trivelapp" target="_blank">GitHub</a>
           <br/> Other project:
           <a href="https://epik.com.pe/" target="_blank" class="primary--text">Epik Perú</a>
         </div>
@@ -76,50 +55,24 @@
 </template>
 <script>
 import { code } from "./code.js"; //json of country dial
+import SendWhatsapp from "./components/SendWhatsapp";
+import AdvanceSendWhatsapp from "./components/AdvanceSendWhatsapp";
 import SettingComponent from "./components/SettingComponent";
-import Icon from "vue-awesome/components/Icon";
 import "vue-awesome/icons/whatsapp";
-import { mapState } from "vuex";
+import Icon from "vue-awesome/components/Icon";
+
 export default {
-  $_veeValidate: {
-    validator: "new"
-  },
   components: {
     Icon,
+    SendWhatsapp,
+    AdvanceSendWhatsapp,
     SettingComponent
   },
   data() {
     return {
-      phoneNumber: null,
       model: null,
-      code: code,
-      dictionary: {
-        custom: {
-          phoneNumber: {
-            numeric: "Only Numbers"
-          }
-        }
-      }
+      code: code
     };
-  },
-  computed: {
-    ...mapState(["country", "message"])
-  },
-  mounted() {
-    this.$validator.localize("en", this.dictionary);
-  },
-  methods: {
-    clearPhoneNumber() {
-      this.phoneNumber = null;
-    },
-    sendWhatsapp() {
-      window.open(
-        `https://api.whatsapp.com/send?phone=${
-          this.country.default.callingCode
-        }${this.phoneNumber}&text=${this.message.text}`,
-        "_blank"
-      );
-    }
   }
 };
 </script>

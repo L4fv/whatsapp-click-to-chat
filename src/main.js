@@ -7,12 +7,7 @@ import { store } from "./store/store";
 import App from "./App";
 import router from "./router";
 import VeeValidate from "vee-validate";
-import VueAnalytics from "vue-analytics";
 
-Vue.use(VueAnalytics, {
-  id: "UA-xxxx",
-  router
-});
 Vue.use(Vuetify, {
   theme: {
     primary: "#00695C",

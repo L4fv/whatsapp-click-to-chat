@@ -1,44 +1,99 @@
 <template>
-  <form v-on:submit.prevent="advanceSendWhatsapp">
-    <v-layout wrap row align-center>
-      <v-flex xs12>Enviar Mensaje predeterminado a varias personas vía whatsapp</v-flex>
-      <v-flex xs3 pa-1>
-        <v-select autocomplete :items="code" item-value="iso" v-model="country" label="País" item-text="nome" bottom :error-messages="errors.collect('country')"
-          v-validate="'required'" data-vv-name="country" required></v-select>
-      </v-flex>
-      <v-flex xs7 pa-1>
-        <v-text-field v-model="phoneNumber" label="Número" v-validate="'required|numeric'" data-vv-name="phoneNumber" @keyup.enter="addPhone"></v-text-field>
-      </v-flex>
-      <v-flex xs2>
-        <v-btn icon @click.native="addPhone">
-          <v-icon>add</v-icon>
-        </v-btn>
-      </v-flex>
-      <v-flex xs12>Listado a enviar</v-flex>
-      <v-flex xs12 pa-3>
-        <ul>
-          <li v-for="(item, key) in arrayNumbers" :key="key" v-text="item"></li>
-        </ul>
-      </v-flex>
-      <v-flex xs12>
-        <v-btn block class="teal--text" type="submit">
-          <icon name="whatsapp" class="mr-2 teal--text"></icon>Enviar Mensaje</v-btn>
-      </v-flex>
-    </v-layout>
-  </form>
+
+  <v-card flat>
+    <v-card-title class="grey lighten-5">
+      El proceso es semi-automático
+      <br/> 1. Agrega tu número para enviarte los links
+      <br/> 2. Agrega números a enviar
+      <br/> 3. Escribir mensaje de difusión
+      <br/> 4. Click en enviar
+      <br/> <span class="red--text">5. Deberías recibir un mensaje con los LINKS de la lista de difusión (No disponible)</span>
+    </v-card-title>    
+    <v-card-text>
+      <v-text-field type="number" v-model="ownPhoneNumber" auto-focus placeholder="123456789" label="Tú Número" :error-messages="errors.collect('ownPhoneNumber')"
+        v-validate="'required|numeric'" data-vv-name="ownPhoneNumber" required></v-text-field>
+      <v-container fluid pa-0>
+        <v-layout wrap row align-center>
+          <v-flex xs12>Lista de difusión</v-flex>
+          <v-flex xs9 text-xs-center>
+            <v-text-field type="number" v-model="phoneNumber" auto-focus placeholder="987654321" label="Número" v-validate="'required|numeric'"
+              data-vv-name="phoneNumber" required @keyup.enter="addPhone(phoneNumber)"></v-text-field>
+          </v-flex>
+          <v-flex xs3 text-xs-center>
+            <v-btn icon @click.native="addPhone(phoneNumber)">
+              agregar
+            </v-btn>
+          </v-flex>
+          <v-flex xs12>
+            <v-layout wrap row :key="i" v-for="(item, i) in arrayNumbers">
+              <v-flex xs10>
+                {{item}}
+              </v-flex>
+              <v-flex xs2>
+                <v-btn icon @click.native="clearPhoneNumber(i)">
+                  <v-icon>clear</v-icon>
+                </v-btn>
+              </v-flex>
+            </v-layout>
+          </v-flex>
+          <v-flex xs12>
+            <v-text-field v-model="message.text" label="Mensaje" placeholder="Hello ..." multi-line auto-grow></v-text-field>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+    <v-card-actions text-xs-center>
+      <v-spacer></v-spacer>
+      <v-btn large class="primary" @click.native="advanceSendWhatsapp" dark center>
+        <icon name="whatsapp" class="mr-2" scale="2" dark></icon>Enviar Mensaje Masivo</v-btn>
+      <v-spacer></v-spacer>
+    </v-card-actions>
+    {{urls}}
+    <!-- </form> -->
+  </v-card>
 </template>
 <script>
+import { mapState } from "vuex";
 export default {
+  props: ["code"],
+  data() {
+    return {
+      urls: [],
+      ownPhoneNumber: null,
+      phoneNumber: null,
+      arrayNumbers: []
+    };
+  },
+  computed: {
+    ...mapState(["country", "message"])
+  },
   methods: {
+    addPhone(item) {
+      if (item) {
+        this.arrayNumbers.push(item);
+        this.phoneNumber = null;
+      }
+    },
+    clearPhoneNumber(i) {
+      this.arrayNumbers.splice(i, 1);
+    },
+
     advanceSendWhatsapp() {
       this.arrayNumbers.forEach(element => {
-        window.open(
-          `https://api.whatsapp.com/send?phone=${
-            this.country.callingCode
-          }${element}`,
-          "_blank"
-        );
+        let url = `https://api.whatsapp.com/send?phone=${
+          this.country.default.callingCode
+        }${element}&text='${this.message.text}'`;
+
+        this.urls.push(url);
       });
+      this.urls = this.urls.join(", ");
+      console.log(this.urls);
+      window.open(
+        `https://api.whatsapp.com/send?phone=${
+          this.country.default.callingCode
+        }${this.ownPhoneNumber}&text='Mensajes${this.urls}'`,
+        "_blank"
+      );
     }
   }
 };
