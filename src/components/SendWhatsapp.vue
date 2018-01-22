@@ -3,7 +3,7 @@
     <v-card flat>
       <v-card-text>
         <v-select autocomplete :items="code" item-value="callingCode" v-model="country.default" label="País" item-text="name" bottom
-          :error-messages="errors.collect('country')" v-validate="'required'" data-vv-name="country" required></v-select>
+          :error-messages="errors.collect('country')" v-validate="'required'" data-vv-name="country" required return-object></v-select>
       </v-card-text>
       <v-card-text>
         <v-text-field type="number" v-model="phoneNumber" auto-focus placeholder="987654321" label="Número" :error-messages="errors.collect('phoneNumber')"
@@ -11,6 +11,7 @@
       </v-card-text>
       <v-card-text>
         <v-text-field v-model="message.text" :label="label" placeholder="Hello ..." multi-line auto-grow></v-text-field>
+        {{country}}
       </v-card-text>
       <v-card-actions text-xs-center>
         <v-spacer></v-spacer>
@@ -18,6 +19,7 @@
           <icon name="whatsapp" class="mr-2" scale="2" dark></icon>Enviar Mensaje</v-btn>
           <v-spacer></v-spacer>
       </v-card-actions>
+      
     </v-card>
   </form>
 </template>
