@@ -11,7 +11,7 @@
       </v-card-text>
       <v-card-text>
         <v-text-field v-model="message.text" :label="label" placeholder="Hello ..." multi-line auto-grow></v-text-field>
-        {{country}}
+        
       </v-card-text>
       <v-card-actions text-xs-center>
         <v-spacer></v-spacer>
