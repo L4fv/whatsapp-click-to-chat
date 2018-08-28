@@ -1,4 +1,4 @@
-# trivelapp
+# vue demo send to whatsapp
 
 > A Vue.js Vuetify pwa a whatsapp demo
 

@@ -45,7 +45,7 @@
       <v-flex xs12 text-xs-center v-if="model==='tab-3'">
         <div class="linkUser">
           GitHub Repository:
-          <a href="https://github.com/L4fv/trivelapp" target="_blank">GitHub</a>
+          <a href="https://github.com/L4fv/vue demo send to whatsapp" target="_blank">GitHub</a>
           <br/> Other project:
           <a href="https://epik.com.pe/" target="_blank" class="primary--text">Epik Perú</a>
         </div>
