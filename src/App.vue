@@ -45,9 +45,9 @@
       <v-flex xs12 text-xs-center v-if="model==='tab-3'">
         <div class="linkUser">
           GitHub Repository:
-          <a href="https://github.com/L4fv/vue demo send to whatsapp" target="_blank">GitHub</a>
+          <a href="https://github.com/L4fv/Vue-demo-send-whatsapp" target="_blank">GitHub</a>
           <br/> Other project:
-          <a href="https://epik.com.pe/" target="_blank" class="primary--text">Epik Perú</a>
+          <a href="https://trivelapp.com" target="_blank" class="primary--text">Trivleapp</a>
         </div>
       </v-flex>
     </v-layout>
@@ -58,7 +58,7 @@ import { code } from "./code.js"; //json of country dial
 import SendWhatsapp from "./components/SendWhatsapp";
 import AdvanceSendWhatsapp from "./components/AdvanceSendWhatsapp";
 import SettingComponent from "./components/SettingComponent";
-import "vue-awesome/icons/whatsapp";
+import "vue-awesome/icons/tablet"
 import Icon from "vue-awesome/components/Icon";
 
 export default {

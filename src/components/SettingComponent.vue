@@ -4,9 +4,9 @@
       <span class="subheading primary--text">Guardar Valores</span>
     </v-flex>
     <v-flex xs8>
-      <v-select class="subheading" autocomplete :items="code" item-value="callingCode" return-object v-model="country.default" label="País por defecto"
-        item-text="name" bottom :error-messages="errors.collect('country')" v-validate="'required'" data-vv-name="country"
-        required></v-select>
+      <v-autocomplete class="subheading" autocomplete :items="code" item-value="callingCode" return-object v-model="country.default" label="País por defecto"
+        item-text="name"  :error-messages="errors.collect('country')" v-validate="'required'" data-vv-name="country"
+        required></v-autocomplete>
     </v-flex>
     <v-flex xs4>
       <v-btn flat @click.native="saveCountry" class="primary--text">Guardar</v-btn>
@@ -14,7 +14,7 @@
     <v-flex xs12>
     </v-flex>
     <v-flex xs8>
-      <v-text-field v-model="message.text" label="Mensaje por defecto" placeholder="Hello ..." multi-line auto-grow></v-text-field>
+      <v-textarea v-model="message.text" label="Mensaje por defecto" placeholder="Hello ..." multi-line auto-grow></v-textarea>
     </v-flex>
     <v-flex xs4>
       <v-btn flat guardar class="primary--text" @click.native="saveMessage">guardar </v-btn>

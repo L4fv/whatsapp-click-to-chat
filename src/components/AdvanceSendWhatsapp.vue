@@ -20,7 +20,7 @@
               data-vv-name="phoneNumber" required @keyup.enter="addPhone(phoneNumber)"></v-text-field>
           </v-flex>
           <v-flex xs3 text-xs-center>
-            <v-btn icon @click.native="addPhone(phoneNumber)">
+            <v-btn flat @click.native="addPhone(phoneNumber)">
               agregar
             </v-btn>
           </v-flex>
@@ -47,8 +47,7 @@
       <v-btn large class="primary" @click.native="advanceSendWhatsapp" dark center>
         <icon name="whatsapp" class="mr-2" scale="2" dark></icon>Enviar Mensaje Masivo</v-btn>
       <v-spacer></v-spacer>
-    </v-card-actions>
-    {{urls}}
+    </v-card-actions>    
     <!-- </form> -->
   </v-card>
 </template>
