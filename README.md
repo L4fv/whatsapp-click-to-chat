@@ -1,4 +1,5 @@
-# App to send and message to whatsapp number, whitout add the contact
+# Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes.
+# Vue js SPA implementation, google analitics and adsense integration for test purpose
 
 ## Project setup
 ```
