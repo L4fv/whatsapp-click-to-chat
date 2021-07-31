@@ -1,5 +1,10 @@
-# Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes.
-# Vue js SPA implementation, google analitics and adsense integration for test purpose
+# WHATSAPP CLICK TO CHAT
+## _Vue js Implementation, Google Analitycs, Adsense, Vuetify_
+
+Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes.
+
+## DEMO
+https://whatsapp.innout.pe
 
 ## Project setup
 ```
@@ -20,3 +25,11 @@ yarn run build
 ```
 yarn run lint
 ```
+
+## License
+
+MIT
+
+**Free Software, Hell Yeah!**
+
+
