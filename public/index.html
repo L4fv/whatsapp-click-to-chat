@@ -1,53 +1,94 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Whatsapp Click to Chat</title>
+    <meta
+      name="description"
+      content="Enviar mensajes whatsapp a contactos sin agregarlos en tu agenda"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png"
+    />
+    <!--[if IE
+      ]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"
+    /><![endif]-->
+    <!-- Add to home screen for Android and modern mobile browsers -->
+    <link
+      rel="manifest"
+      href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json"
+    />
+    <meta name="theme-color" content="#00695C" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+      integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+      crossorigin="anonymous"
+    />
+    <!-- Primary Meta Tags -->
+    <title>Whatsapp Click to Chat</title>
+    <meta name="title" content="Whatsapp Click to Chat" />
+    <meta
+      name="description"
+      content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
+    />
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Whatsapp Click to Chat</title>
-  <meta name="description" content="Enviar mensajes whatsapp a contactos sin agregarlos en tu agenda">
-  <link rel="icon" type="image/png" sizes="32x32" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="<%= htmlWebpackPlugin.files.publicPath %>static/img/icons/favicon-16x16.png">
-  <!--[if IE]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"><![endif]-->
-  <!-- Add to home screen for Android and modern mobile browsers -->
-  <link rel="manifest" href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json">
-  <meta name="theme-color" content="#00695C">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-<!-- Primary Meta Tags -->
-<title>Whatsapp Click to Chat</title>
-<meta name="title" content="Whatsapp Click to Chat">
-<meta name="description" content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes.">
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://whatsapp.innout.pe" />
+    <meta property="og:title" content="Whatsapp Click to Chat" />
+    <meta
+      property="og:description"
+      content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
+    />
+    <meta property="og:image" content="../static/logo.png" />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://whatsapp.innout.pe">
-<meta property="og:title" content="Whatsapp Click to Chat">
-<meta property="og:description" content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes.">
-<meta property="og:image" content="../static/logo.png">
-
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image">
-<meta property="twitter:url" content="https://whatsapp.innout.pe">
-<meta property="twitter:title" content="Whatsapp Click to Chat">
-<meta property="twitter:description" content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes.">
-<meta property="twitter:image" content="../static/logo.png">
-  <% for (var chunk of webpack.chunks) {
-        for (var file of chunk.files) {
-          if (file.match(/\.(js|css)$/)) { %>
-    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://whatsapp.innout.pe" />
+    <meta property="twitter:title" content="Whatsapp Click to Chat" />
+    <meta
+      property="twitter:description"
+      content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
+    />
+    <meta property="twitter:image" content="../static/logo.png" />
+    <script
+      async
+      src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+    ></script>
+    <% for (var chunk of webpack.chunks) { for (var file of chunk.files) { if
+    (file.match(/\.(js|css)$/)) { %>
+    <link
+      rel="<%= chunk.initial?'preload':'prefetch' %>"
+      href="<%= htmlWebpackPlugin.files.publicPath + file %>"
+      as="<%= file.match(/\.css$/)?'style':'script' %>"
+    />
     <% }}} %>
-      <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
-</head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+      rel="stylesheet"
+      type="text/css"
+    />
+  </head>
 
-<body>
-  <noscript>
-    This is your fallback content in case JavaScript fails to load.
-  </noscript>
-  <div id="app"></div>
-  <!-- Todo: only include in production -->
-  <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+  <body>
+    <noscript>
+      This is your fallback content in case JavaScript fails to load.
+    </noscript>
+    <div id="app"></div>
+    <!-- Todo: only include in production -->
+    <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
-</body>
-
+  </body>
 </html>

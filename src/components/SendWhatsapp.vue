@@ -47,13 +47,12 @@
           </v-flex>
           <v-flex xs12>
             <div class="ad-container">
-              <Adsense
-                :data-ad-client="adsId"
-                :data-ad-slot="adsIdNumber"
-                data-ad-format="rectangle"
-                data-full-width-responsive="true"
+              <InFeedAdsense
+                :data-ad-layout-key="adsLayout"
+                :data-ad-client="adsIdClient"
+                :data-ad-slot="adsSlot"
               >
-              </Adsense>
+              </InFeedAdsense>
             </div>
           </v-flex>
         </v-layout>
@@ -62,60 +61,64 @@
   </form>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 export default {
   $_veeValidate: {
-    validator: "new",
+    validator: 'new'
   },
-  props: ["code"],
+  props: ['code'],
+
   data() {
     return {
       checkbox: false,
       phoneNumber: null,
-      mensaje: "",
+      mensaje: ''
     };
   },
   computed: {
-    adsId() {
+    adsIdClient() {
       return process.env.VUE_APP_BASE_ADSENSE_ID;
-      
-    },adsIdNumber() {
-      return process.env.VUE_APP_BASE_ADSENSE_ID_KEY;
-      
+    },
+    adsLayout() {
+      return process.env.VUE_APP_BASE_ADSENSE_LAYOUT;
+    },
+    adsSlot() {
+      return process.env.VUE_APP_BASE_ADSENSE_SLOT;
     },
     label() {
       return `Enviar mensaje a +${this.country.default.callingCode} ${
-        this.phoneNumber ? this.phoneNumber : ""
+        this.phoneNumber ? this.phoneNumber : ''
       }`;
     },
-    ...mapState(["country", "message"]),
+    ...mapState(['country', 'message'])
   },
   watch: {
     checkbox(val) {
       if (val) {
         this.mensaje = this.message;
       } else {
-        this.mensaje = "";
+        this.mensaje = '';
       }
     },
     message() {
-      console.log("te6t");
       if (this.checkbox) {
         this.mensaje = this.message;
       }
-    },
+    }
   },
   methods: {
     sendWhatsapp() {
       /* this is the magic */
       window.open(
-        `https://api.whatsapp.com/send?phone=${this.country.default.callingCode}${this.phoneNumber}&text=${this.mensaje}`,
-        "_blank"
+        `https://api.whatsapp.com/send?phone=${
+          this.country.default.callingCode
+        }${this.phoneNumber}&text=${this.mensaje}`,
+        '_blank'
       );
-    },
+    }
   },
   mounted() {
     this.checkbox = true;
-  },
+  }
 };
 </script>
