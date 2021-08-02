@@ -35,11 +35,9 @@
       ></v-textarea>
     </v-flex>
     <v-flex xs4>
-        
-          <v-btn flat class="primary--text" @click.native="addMessages">
-            Agregar
-          </v-btn>
-        
+      <v-btn flat class="primary--text" @click.native="addMessages">
+        Agregar
+      </v-btn>
     </v-flex>
     <v-flex xs12 v-for="item in messages" :key="item.id">
       <v-layout>
@@ -59,39 +57,57 @@
       </v-layout>
       <v-spacer></v-spacer>
     </v-flex>
-    <v-snackbar right top color="green" v-model="snackbar"> Success </v-snackbar>
+    <v-snackbar right top color="green" v-model="snackbar">
+      Success
+    </v-snackbar>
   </v-layout>
 </template>
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex';
 export default {
-  props: ["code"],
+  props: ['code'],
   data() {
     return {
       checkbox: false,
       phoneNumber: null,
-      mensaje: "",
-      snackbar: false,
+      mensaje: '',
+      snackbar: false
     };
   },
   computed: {
-    ...mapState(["messages", "message", "country"]),
+    ...mapState(['messages', 'message', 'country'])
   },
   methods: {
     saveCountry() {
-      this.$store.commit("SET_COUNTRY", this.country);
+      this.$gtm.trackEvent({
+        event: null, // Event type [default = 'interaction'] (Optional)
+        category: 'send',
+        action: 'click',
+        label: 'country',
+        value: this.country,
+        noninteraction: false // Optional
+      });
+      this.$store.commit('SET_COUNTRY', this.country);
     },
     addMessages() {
-      this.$store.commit("SET_MESSAGES", this.mensaje);
-      this.mensaje = "";
+      this.$gtm.trackEvent({
+        event: null, // Event type [default = 'interaction'] (Optional)
+        category: 'send',
+        action: 'click',
+        label: 'message',
+        value: '',
+        noninteraction: false // Optional
+      });
+      this.$store.commit('SET_MESSAGES', this.mensaje);
+      this.mensaje = '';
     },
     selectMessage(payload) {
       this.snackbar = true;
-      this.$store.commit("SET_MESSAGE", payload.text);
+      this.$store.commit('SET_MESSAGE', payload.text);
     },
     cleanMessage(payload) {
-      this.$store.commit("CLEAN_ITEM_MESSAGES", payload);
-    },
-  },
+      this.$store.commit('CLEAN_ITEM_MESSAGES', payload);
+    }
+  }
 };
 </script>

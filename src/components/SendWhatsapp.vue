@@ -47,7 +47,8 @@
           </v-flex>
           <v-flex xs12>
             <div class="ad-container">
-              <InFeedAdsense class="adsbygoogle example_responsive_1"
+              <InFeedAdsense
+                class="adsbygoogle example_responsive_1"
                 :data-ad-layout-key="adsLayout"
                 :data-ad-client="adsIdClient"
                 :data-ad-slot="adsSlot"
@@ -110,7 +111,17 @@ export default {
   },
   methods: {
     sendWhatsapp() {
+      this.$gtm.trackEvent({
+        event: null, // Event type [default = 'interaction'] (Optional)
+        category: 'send',
+        action: 'click',
+        label: 'whatsapp',
+        value: this.mensaje,
+        noninteraction: false // Optional
+      });
+
       /* this is the magic */
+
       window.open(
         `https://api.whatsapp.com/send?phone=${
           this.country.default.callingCode
@@ -125,7 +136,20 @@ export default {
 };
 </script>
 <style>
-.example_responsive_1 { width: 320px; height: 100px; }
-@media(min-width: 500px) { .example_responsive_1 { width: 468px; height: 60px; } }
-@media(min-width: 800px) { .example_responsive_1 { width: 728px; height: 90px; } }
+.example_responsive_1 {
+  width: 320px;
+  height: 100px;
+}
+@media (min-width: 500px) {
+  .example_responsive_1 {
+    width: 468px;
+    height: 60px;
+  }
+}
+@media (min-width: 800px) {
+  .example_responsive_1 {
+    width: 728px;
+    height: 90px;
+  }
+}
 </style>
