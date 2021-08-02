@@ -112,7 +112,7 @@ export default {
   methods: {
     sendWhatsapp() {
       this.$gtm.trackEvent({
-        event: null, // Event type [default = 'interaction'] (Optional)
+        event: 'event', 
         category: 'send',
         action: 'click',
         label: 'whatsapp',

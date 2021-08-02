@@ -80,7 +80,7 @@ export default {
   methods: {
     saveCountry() {
       this.$gtm.trackEvent({
-        event: null, // Event type [default = 'interaction'] (Optional)
+        event: 'event', 
         category: 'send',
         action: 'click',
         label: 'country',
@@ -91,7 +91,7 @@ export default {
     },
     addMessages() {
       this.$gtm.trackEvent({
-        event: null, // Event type [default = 'interaction'] (Optional)
+        event: 'event', 
         category: 'send',
         action: 'click',
         label: 'message',
