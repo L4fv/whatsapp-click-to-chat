@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Whatsapp Click to Chat | innout.pe</title>
+    <title>innout.pe | Escribe por Whatsapp sin agregarlo en tu agenda</title>
     <link
       rel="icon"
       type="image/png"
@@ -30,7 +30,7 @@
       crossorigin="anonymous"
     />
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Whatsapp Click to Chat | innout.pe" />
+    <meta name="title" content="innout.pe | Escribe por Whatsapp sin agregarlo en tu agenda" />
     <meta
       name="description"
       content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
@@ -45,8 +45,8 @@
       property="og:description"
       content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
     />
-    <meta property="og:image" content="../static/logo.png" />
-
+    <meta property="og:image" content="<%= htmlWebpackPlugin.files.publicPath %>static/logo.png" />
+    <meta name="keywords" content="click to chat, whatsapp, chat, enviar mensaje, free message"/>
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://whatsapp.innout.pe" />
@@ -55,7 +55,7 @@
       property="twitter:description"
       content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
     />
-    <meta property="twitter:image" content="../static/logo.png" />
+    <meta property="twitter:image" content="<%= htmlWebpackPlugin.files.publicPath %>static/logo.png" />
    
     <% for (var chunk of webpack.chunks) { for (var file of chunk.files) { if
     (file.match(/\.(js|css)$/)) { %>
