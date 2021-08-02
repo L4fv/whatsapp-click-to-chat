@@ -12,7 +12,7 @@ import createPersistedState from 'vuex-persistedstate';
 import MensajeModel from '../models/mensaje';
 Vue.use(Vuex);
 export const store = new Vuex.Store({
-  plugins: [createPersistedState()],
+  plugins: [createPersistedState({key: 'V0001_1.1'})],
   state: {
     message: MensajeModel.BaseForm(),
     messages: [{

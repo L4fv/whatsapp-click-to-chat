@@ -25,10 +25,7 @@
       ]><link rel="shortcut icon" href="/static/img/icons/favicon.ico"
     /><![endif]-->
     <!-- Add to home screen for Android and modern mobile browsers -->
-    <link
-      rel="manifest"
-      href="<%= htmlWebpackPlugin.files.publicPath %>static/manifest.json"
-    />
+
     <meta name="theme-color" content="#00695C" />
     <link
       rel="stylesheet"
@@ -63,10 +60,7 @@
       content="Envía fácilmente un WhatsApp a un contacto sin agregarlo en tu agenda, puedes crear mensajes personalizados para enviar a tus clientes."
     />
     <meta property="twitter:image" content="../static/logo.png" />
-    <script
-      async
-      src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-    ></script>
+   
     <% for (var chunk of webpack.chunks) { for (var file of chunk.files) { if
     (file.match(/\.(js|css)$/)) { %>
     <link

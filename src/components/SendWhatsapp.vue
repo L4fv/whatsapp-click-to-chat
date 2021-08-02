@@ -47,10 +47,12 @@
           </v-flex>
           <v-flex xs12>
             <div class="ad-container">
-              <InFeedAdsense
+              <InFeedAdsense class="adsbygoogle example_responsive_1"
                 :data-ad-layout-key="adsLayout"
                 :data-ad-client="adsIdClient"
                 :data-ad-slot="adsSlot"
+                data-ad-format="rectangle"
+                data-full-width-responsive="yes"
               >
               </InFeedAdsense>
             </div>
@@ -122,3 +124,8 @@ export default {
   }
 };
 </script>
+<style>
+.example_responsive_1 { width: 320px; height: 100px; }
+@media(min-width: 500px) { .example_responsive_1 { width: 468px; height: 60px; } }
+@media(min-width: 800px) { .example_responsive_1 { width: 728px; height: 90px; } }
+</style>
